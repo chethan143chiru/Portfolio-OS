@@ -1,0 +1,6 @@
+{
+  "name": "Portfolio OS",
+  "description": "A cinematic, futuristic developer portfolio operating system featuring interactive hotspots, GitHub repository sync, credential validation, and full resume systems.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
