@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Award, Code, Github, Sparkles, BookOpen, ChevronRight, Terminal, Network, ShieldCheck } from 'lucide-react';
 import { ACHIEVEMENTS, CONTACT_INFO } from '../data';
@@ -11,6 +11,16 @@ interface InteractivePortraitProps {
 export default function InteractivePortrait({ onNavToSection }: InteractivePortraitProps) {
   const [activeHotspot, setActiveHotspot] = useState<'head' | 'chest' | 'arm' | null>(null);
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsMobileOrTablet(window.innerWidth < 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
 
   // Floating particles around the portrait
   const particles = [
@@ -96,8 +106,18 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
       {/* ==================== HOTSPOT 1: HEAD (ACHIEVEMENTS) ==================== */}
       <div
         className="absolute top-[20%] left-[45%] -translate-x-1/2 -translate-y-1/2 z-20"
-        onMouseEnter={() => setActiveHotspot('head')}
-        onMouseLeave={() => setActiveHotspot(null)}
+        onMouseEnter={() => {
+          if (!isMobileOrTablet) setActiveHotspot('head');
+        }}
+        onMouseLeave={() => {
+          if (!isMobileOrTablet) setActiveHotspot(null);
+        }}
+        onClick={(e) => {
+          if (isMobileOrTablet) {
+            e.stopPropagation();
+            setActiveHotspot(activeHotspot === 'head' ? null : 'head');
+          }
+        }}
       >
         <div className="relative cursor-pointer group">
           {/* Target Reticle Radar Ping */}
@@ -117,8 +137,18 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
       {/* ==================== HOTSPOT 2: CHEST (SKILLS PREVIEW) ==================== */}
       <div
         className="absolute top-[52%] left-[38%] -translate-x-1/2 -translate-y-1/2 z-20"
-        onMouseEnter={() => setActiveHotspot('chest')}
-        onMouseLeave={() => setActiveHotspot(null)}
+        onMouseEnter={() => {
+          if (!isMobileOrTablet) setActiveHotspot('chest');
+        }}
+        onMouseLeave={() => {
+          if (!isMobileOrTablet) setActiveHotspot(null);
+        }}
+        onClick={(e) => {
+          if (isMobileOrTablet) {
+            e.stopPropagation();
+            setActiveHotspot(activeHotspot === 'chest' ? null : 'chest');
+          }
+        }}
       >
         <div className="relative cursor-pointer group">
           <span className="absolute -inset-2.5 rounded-full border border-orange-500 bg-orange-500/10 animate-ping opacity-60" style={{ animationDuration: '2.5s' }} />
@@ -136,8 +166,18 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
       {/* ==================== HOTSPOT 3: ARM (GITHUB STATISTICS) ==================== */}
       <div
         className="absolute top-[75%] left-[55%] -translate-x-1/2 -translate-y-1/2 z-20"
-        onMouseEnter={() => setActiveHotspot('arm')}
-        onMouseLeave={() => setActiveHotspot(null)}
+        onMouseEnter={() => {
+          if (!isMobileOrTablet) setActiveHotspot('arm');
+        }}
+        onMouseLeave={() => {
+          if (!isMobileOrTablet) setActiveHotspot(null);
+        }}
+        onClick={(e) => {
+          if (isMobileOrTablet) {
+            e.stopPropagation();
+            setActiveHotspot(activeHotspot === 'arm' ? null : 'arm');
+          }
+        }}
       >
         <div className="relative cursor-pointer group">
           <span className="absolute -inset-2.5 rounded-full border border-purple-500 bg-purple-500/10 animate-ping opacity-60" style={{ animationDuration: '1.8s' }} />

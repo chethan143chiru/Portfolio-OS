@@ -20,6 +20,16 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<ViewSection>('Home');
   const [isProfileHovered, setIsProfileHovered] = useState(false);
   const [isMissionHovered, setIsMissionHovered] = useState(false);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsMobileOrTablet(window.innerWidth < 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
 
   useEffect(() => {
     const handleDocumentClick = () => {
@@ -88,11 +98,22 @@ export default function App() {
               {/* BRAND CORNER LOGO MODULE */}
               <div
                 className="relative z-50 flex items-center"
-                onMouseLeave={() => setIsProfileHovered(false)}
+                onMouseLeave={() => {
+                  if (!isMobileOrTablet) setIsProfileHovered(false);
+                }}
               >
                 {/* Brand Link Trigger (Only hovering logo/name triggers the display) */}
                 <div 
-                  onMouseEnter={() => setIsProfileHovered(true)}
+                  onMouseEnter={() => {
+                    if (!isMobileOrTablet) setIsProfileHovered(true);
+                  }}
+                  onClick={(e) => {
+                    if (isMobileOrTablet) {
+                      e.stopPropagation();
+                      setIsProfileHovered(!isProfileHovered);
+                      setIsMissionHovered(false);
+                    }
+                  }}
                   className="flex items-center gap-3 cursor-pointer group/brand"
                 >
                   {/* Metallic neon pulse monogram outer rim */}
@@ -337,10 +358,21 @@ export default function App() {
               {/* ACTION: Top Right Status Indicator (Pulser Status Badge is replaced with CURRENT MISSION interactive HUD status panel) */}
               <div 
                 className="relative z-50 animate-fade-in flex flex-col items-end"
-                onMouseLeave={() => setIsMissionHovered(false)}
+                onMouseLeave={() => {
+                  if (!isMobileOrTablet) setIsMissionHovered(false);
+                }}
               >
                 <div 
-                  onMouseEnter={() => setIsMissionHovered(true)}
+                  onMouseEnter={() => {
+                    if (!isMobileOrTablet) setIsMissionHovered(true);
+                  }}
+                  onClick={(e) => {
+                    if (isMobileOrTablet) {
+                      e.stopPropagation();
+                      setIsMissionHovered(!isMissionHovered);
+                      setIsProfileHovered(false);
+                    }
+                  }}
                   className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-orange-500/30 bg-orange-500/5 hover:bg-orange-500/10 hover:border-orange-500/60 transition-all cursor-pointer shadow-[0_0_15px_rgba(249,115,22,0.1)] group/mission select-none"
                 >
                   <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
