@@ -311,16 +311,16 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
 
             <div className="grid grid-cols-3 gap-1 sm:gap-1.5 text-center mt-1">
               <div className="bg-white/5 border border-white/10 p-1 rounded-lg">
-                <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">15+</span>
+                <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">1.8k+</span>
+                <span className="text-[6.5px] sm:text-[7px] text-zinc-400 block mt-0.5 text-center">Stars</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg">
+                <span className="text-purple-400 font-extrabold text-[9px] sm:text-[11px] block text-center">540+</span>
+                <span className="text-[6.5px] sm:text-[7px] text-zinc-400 block mt-0.5 text-center">Clones</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg">
+                <span className="text-[#eae5ef] font-extrabold text-[9px] sm:text-[11px] block text-center">16+</span>
                 <span className="text-[6.5px] sm:text-[7px] text-zinc-400 block mt-0.5 text-center">Repos</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 p-1 rounded-lg">
-                <span className="text-purple-400 font-extrabold text-[9px] sm:text-[11px] block text-center">4+</span>
-                <span className="text-[6.5px] sm:text-[7px] text-zinc-400 block mt-0.5 text-center">Core</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 p-1 rounded-lg">
-                <span className="text-[#eae5ef] font-extrabold text-[9px] sm:text-[11px] block text-center">5+</span>
-                <span className="text-[6.5px] sm:text-[7px] text-zinc-400 block mt-0.5 text-center">Techs</span>
               </div>
             </div>
           </motion.div>

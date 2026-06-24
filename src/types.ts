@@ -23,6 +23,12 @@ export interface CertificationType {
   credentialUrl: string;
   description: string;
   skills: string[];
+  category: string;
+  metrics?: {
+    likes: number;
+    comments: number;
+    impressions: number;
+  };
 }
 
 export interface AchievementItem {

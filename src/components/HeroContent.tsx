@@ -1,7 +1,39 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Layers, Award, Terminal, ArrowLeft, Cpu } from 'lucide-react';
-import { CERTIFICATIONS } from '../data';
+
+const BRAND_PREVIEWS = [
+  {
+    id: 'aws',
+    name: 'AWS Academy',
+    logoUrl: 'https://img.icons8.com/color/144/amazon-web-services.png'
+  },
+  {
+    id: 'google',
+    name: 'Google Skills',
+    logoUrl: 'https://media.licdn.com/dms/image/v2/D560BAQFV-ds_iFfVSQ/company-logo_200_200/company-logo_200_200/0/1698660876286?e=2147483647&v=beta&t=GTNf3kD3LVtMJOG8AdTtdqv1aGmSDNC6zHOYBnEWyww'
+  },
+  {
+    id: 'microsoft',
+    name: 'Microsoft',
+    logoUrl: 'https://img.icons8.com/color/144/microsoft.png'
+  },
+  {
+    id: 'ibm',
+    name: 'IBM',
+    logoUrl: 'https://img.icons8.com/color/144/ibm.png'
+  },
+  {
+    id: 'claude',
+    name: 'Claude AI',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Claude_AI_symbol.svg/960px-Claude_AI_symbol.svg.png'
+  },
+  {
+    id: 'gemini',
+    name: 'Gemini',
+    logoUrl: 'https://static.vecteezy.com/system/resources/previews/055/687/065/non_2x/gemini-google-icon-symbol-logo-free-png.png'
+  }
+];
 
 interface HeroContentProps {
   onNavToSection: (section: 'Home' | 'Projects' | 'Certificates' | 'Resume' | 'Contact') => void;
@@ -92,7 +124,7 @@ export default function HeroContent({ onNavToSection }: HeroContentProps) {
         <div
           className="p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg text-center md:text-left select-none"
         >
-          <p className="text-2xl font-black text-purple-500">12+</p>
+          <p className="text-2xl font-black text-purple-500">40+</p>
           <p className="text-[10px] uppercase text-zinc-400 mt-1 font-bold tracking-wider">Certifications</p>
         </div>
 
@@ -106,25 +138,31 @@ export default function HeroContent({ onNavToSection }: HeroContentProps) {
       </div>
 
       {/* ==================== CERTIFICATION PREVIEW ==================== */}
-      <div className="flex flex-col gap-2.5 border-t border-white/10 pt-4" id="certifications-previews">
-        <span className="text-[9px] text-zinc-400 font-mono font-black tracking-[0.15em] uppercase select-none">
-          TOP CERTIFICATIONS FROM
-        </span>
-        <div className="flex flex-wrap gap-x-5 gap-y-2 items-center opacity-75">
-          {CERTIFICATIONS.map((cert) => (
+      <div 
+        className="flex flex-col gap-3 border-t border-white/10 pt-4" 
+        id="certifications-previews"
+      >
+        <div className="flex items-center">
+          <span className="text-[9px] text-zinc-400 font-mono font-black tracking-[0.15em] uppercase select-none">
+            TOP CERTIFICATIONS FROM
+          </span>
+        </div>
+        
+        <div className="flex flex-wrap gap-x-6 gap-y-3 items-center">
+          {BRAND_PREVIEWS.map((brand) => (
             <div
-              key={cert.id}
+              key={brand.id}
               className="flex items-center gap-1.5 select-none"
-              title={cert.name}
+              title={brand.name}
             >
               <img
-                src={cert.badgeUrl}
-                alt={cert.company}
-                className="w-4 h-4 object-contain filter brightness-90 contrast-125"
+                src={brand.logoUrl}
+                alt={brand.name}
+                className="w-4.5 h-4.5 object-contain filter brightness-95 contrast-110 shrink-0"
                 referrerPolicy="no-referrer"
               />
-              <span className="text-[10px] font-mono text-zinc-300 font-semibold">
-                {cert.company}
+              <span className="text-[10px] font-mono text-zinc-300 font-bold">
+                {brand.name}
               </span>
             </div>
           ))}

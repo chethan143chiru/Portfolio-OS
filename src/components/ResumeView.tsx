@@ -329,26 +329,33 @@ export default function ResumeView() {
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 md:px-6 py-6 pb-20 relative z-10 text-left font-mono" id="resume-view-main">
-      {/* View Segment Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-6 relative font-mono">
-        <div>
-          <div className="flex items-center gap-2 mb-1.5">
-            <Terminal className="text-orange-500" size={18} />
-            <h2 className="text-sm font-black text-white tracking-[0.2em] uppercase">SYSTEM CREDENTIAL MATRIX // RESUME</h2>
-          </div>
-          <p className="text-xs text-zinc-400">
-            Interactive, database-indexed dossier compiling academic milestones, field experience, and skill directories.
-          </p>
-        </div>
+      {/* View Segment Header - Holographic Box/Panel */}
+      <div className="relative mb-10 border-b border-white/10 pb-8 overflow-hidden bg-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-xl border border-white/5 shadow-[0_10px_50px_rgba(249,115,22,0.05)]">
+        {/* Holographic grid scanner overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
+        <div className="absolute -top-12 -right-12 w-64 h-64 bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-        {/* Top Right Floating Download Trigger */}
-        <button
-          onClick={triggerDownloadSimulation}
-          className="bg-white/5 hover:bg-orange-500 text-white hover:text-black border border-white/10 hover:border-orange-400 py-2.5 px-5 rounded-full flex items-center justify-center gap-2 text-xs font-black transition-all cursor-pointer shadow-sm active:scale-95 self-start select-none font-sans uppercase tracking-wider"
-        >
-          <Download size={14} />
-          <span>DOWNLOAD CV PORT (.PDF)</span>
-        </button>
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6 font-mono">
+          <div className="flex-1">
+            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase mb-2 flex items-center gap-3" id="resume-matrix-title">
+              <span>SYSTEM CREDENTIAL MATRIX</span>
+              <Terminal className="text-orange-500 w-7 h-7 animate-pulse shrink-0" />
+            </h1>
+            <p className="text-xs sm:text-sm text-zinc-400 font-sans tracking-wide leading-relaxed">
+              Interactive, database-indexed dossier compiling academic milestones, field experience, and skill directories.
+            </p>
+          </div>
+
+          {/* Top Right Floating Download Trigger */}
+          <button
+            onClick={triggerDownloadSimulation}
+            className="bg-white/5 hover:bg-orange-500 text-white hover:text-black border border-white/10 hover:border-orange-400 py-2.5 px-5 rounded-full flex items-center justify-center gap-2 text-xs font-black transition-all cursor-pointer shadow-sm active:scale-95 self-start md:self-auto select-none font-sans uppercase tracking-wider relative z-20"
+          >
+            <Download size={14} />
+            <span>DOWNLOAD CV PORT (.PDF)</span>
+          </button>
+        </div>
       </div>
 
       {/* Grid: Left tabs controls (40%), Right detail view (60%) */}
