@@ -1,7 +1,6 @@
 import { useState, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Award, Code, Github, Sparkles, BookOpen, ChevronRight, Terminal, Network, ShieldCheck } from 'lucide-react';
-import { ACHIEVEMENTS, CONTACT_INFO } from '../data';
 import cinematicPortrait from '../assets/images/cinematic_portrait_1781353600397.jpg';
 
 interface InteractivePortraitProps {
@@ -212,24 +211,19 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
               </div>
             </div>
             
-            <div className="flex flex-col gap-1.5 sm:gap-2">
-              {ACHIEVEMENTS.slice(0, 3).map((ach) => (
-                <div key={ach.id} className="border-l border-orange-500/40 pl-1.5 sm:pl-2 py-0.5">
-                  <div className="flex justify-between items-start gap-1">
-                    <span className="text-[8px] sm:text-[9.5px] font-bold text-white tracking-wide leading-tight">
-                      {ach.title === 'Cleared JEE Main'
-                        ? 'JEE Main Qualifier'
-                        : ach.title === 'H2S Hackathon'
-                        ? 'Industry Certified'
-                        : ach.title === 'VTU Honours Program'
-                        ? 'VTU Honour'
-                        : ach.title}
-                    </span>
-                    <span className="text-[7px] sm:text-[8px] text-zinc-300 font-semibold bg-white/10 px-0.5 sm:px-1 border border-white/5 rounded whitespace-nowrap">{ach.year}</span>
-                  </div>
-                  <p className="text-[7px] sm:text-[8px] text-zinc-400 leading-snug mt-0.5">{ach.subtitle}</p>
-                </div>
-              ))}
+            <div className="grid grid-cols-3 gap-1 sm:gap-1.5 text-center mt-1">
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+                <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">JEE</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">JEE<br />Qualifier</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+                <span className="text-purple-400 font-extrabold text-[9px] sm:text-[11px] block text-center">VTU</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">VTU<br />Honour</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+                <span className="text-[#eae5ef] font-extrabold text-[9px] sm:text-[11px] block text-center">IND</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Industry<br />Certified</span>
+              </div>
             </div>
           </motion.div>
         )}
@@ -253,38 +247,18 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
               </div>
             </div>
 
-            <div className="flex flex-col gap-1.5 sm:gap-2 text-[7px] sm:text-[9px]">
-              <div>
-                <span className="text-orange-400 font-black tracking-wider text-[7px] block mb-0.5 uppercase">PROGRAMMING</span>
-                <div className="flex flex-wrap gap-1">
-                  {['Python', 'Java', 'JavaScript', 'Swift', 'SQL'].map((s) => (
-                    <span key={s} className="bg-white/10 border border-white/5 px-1 sm:px-1.5 py-0.5 text-[6px] sm:text-[8px] text-white rounded whitespace-nowrap">
-                      {s}
-                    </span>
-                  ))}
-                </div>
+            <div className="grid grid-cols-3 gap-1 sm:gap-1.5 text-center mt-1">
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+                <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">4+</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Programming<br />Languages</span>
               </div>
-
-              <div>
-                <span className="text-purple-400 font-black tracking-wider text-[7px] block mb-0.5 uppercase">FRAMEWORKS</span>
-                <div className="flex flex-wrap gap-1">
-                  {['React', 'NodeJS', 'SwiftUI', 'TF / Torch'].map((s) => (
-                    <span key={s} className="bg-white/10 border border-white/5 px-1 sm:px-1.5 py-0.5 text-[6px] sm:text-[8px] text-white rounded whitespace-nowrap">
-                      {s}
-                    </span>
-                  ))}
-                </div>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+                <span className="text-purple-400 font-extrabold text-[9px] sm:text-[11px] block text-center">8+</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Frameworks</span>
               </div>
-
-              <div>
-                <span className="text-blue-400 font-black tracking-wider text-[7px] block mb-0.5 uppercase">CLOUD / ENV</span>
-                <div className="flex flex-wrap gap-1">
-                  {['AWS', 'GCP', 'Docker', 'Kubernetes'].map((s) => (
-                    <span key={s} className="bg-white/10 border border-white/5 px-1 sm:px-1.5 py-0.5 text-[6px] sm:text-[8px] text-white rounded whitespace-nowrap">
-                      {s}
-                    </span>
-                  ))}
-                </div>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+                <span className="text-blue-400 font-extrabold text-[9px] sm:text-[11px] block text-center">6+</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Cloud/Env</span>
               </div>
             </div>
           </motion.div>
