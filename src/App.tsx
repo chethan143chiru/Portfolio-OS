@@ -52,6 +52,8 @@ export default function App() {
 
   const handleNavTransition = (section: ViewSection) => {
     setActiveSection(section);
+    setIsProfileHovered(false);
+    setIsMissionHovered(false);
   };
 
   return (
@@ -247,8 +249,21 @@ export default function App() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 15, scale: 0.95 }}
                       transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                      onClick={(e) => e.stopPropagation()}
-                      className="absolute top-14 left-0 w-[290px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl shadow-[0_4px_30px_rgba(249,115,22,0.15),_0_4px_30px_rgba(168,85,247,0.15)] text-left font-mono z-50 text-xs text-[#eae5ef] pointer-events-auto"
+                      onClick={(e) => {
+                        if (isInteractiveTouch) {
+                          setIsProfileHovered(false);
+                        } else {
+                          e.stopPropagation();
+                        }
+                      }}
+                      onTouchStart={(e) => {
+                        if (isInteractiveTouch) {
+                          setIsProfileHovered(false);
+                        } else {
+                          e.stopPropagation();
+                        }
+                      }}
+                      className={`absolute top-14 left-0 w-[290px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl shadow-[0_4px_30px_rgba(249,115,22,0.15),_0_4px_30px_rgba(168,85,247,0.15)] text-left font-mono z-50 text-xs text-[#eae5ef] ${isInteractiveTouch ? 'pointer-events-none' : 'pointer-events-auto'}`}
                       style={{
                         backgroundImage: "linear-gradient(rgba(10, 10, 12, 0.2), rgba(10, 10, 12, 0.2)), linear-gradient(135deg, #f97316 0%, #a855f7 100%)",
                         backgroundOrigin: "border-box",
@@ -419,13 +434,26 @@ export default function App() {
                         filter: "brightness(1.15)",
                         transition: { duration: 0.2 }
                       }}
-                      className="absolute top-12 right-0 w-[300px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl text-left font-mono z-50 text-xs text-[#eae5ef] pointer-events-auto"
+                      className={`absolute top-12 right-0 w-[300px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl text-left font-mono z-50 text-xs text-[#eae5ef] ${isInteractiveTouch ? 'pointer-events-none' : 'pointer-events-auto'}`}
                       style={{
                         backgroundImage: "linear-gradient(rgba(10, 10, 12, 0.2), rgba(10, 10, 12, 0.2)), linear-gradient(135deg, #f97316 0%, #a855f7 100%)",
                         backgroundOrigin: "border-box",
                         backgroundClip: "padding-box, border-box",
                       }}
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => {
+                        if (isInteractiveTouch) {
+                          setIsMissionHovered(false);
+                        } else {
+                          e.stopPropagation();
+                        }
+                      }}
+                      onTouchStart={(e) => {
+                        if (isInteractiveTouch) {
+                          setIsMissionHovered(false);
+                        } else {
+                          e.stopPropagation();
+                        }
+                      }}
                     >
                       {/* Holographic scanner grid texture */}
                       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none rounded-2xl" />

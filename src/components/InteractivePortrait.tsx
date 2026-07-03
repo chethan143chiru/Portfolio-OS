@@ -221,7 +221,7 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
             exit={{ opacity: 0, scale: 0.9, y: -10 }}
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
-            className="absolute right-2 xs:right-4 sm:right-5 top-[5%] sm:top-[12%] w-[135px] xs:w-[165px] sm:w-[245px] md:w-[275px] z-30 bg-zinc-950/95 backdrop-blur-3xl border border-white/15 rounded-xl p-1.5 sm:p-3.5 shadow-[0_12px_44px_rgba(0,0,0,0.8)] font-mono text-left pointer-events-auto select-none"
+            className={`absolute right-2 xs:right-4 sm:right-5 top-[5%] sm:top-[12%] w-[135px] xs:w-[165px] sm:w-[245px] md:w-[275px] z-30 bg-zinc-950/95 backdrop-blur-3xl border border-white/15 rounded-xl p-1.5 sm:p-3.5 shadow-[0_12px_44px_rgba(0,0,0,0.8)] font-mono text-left select-none ${isInteractiveTouch ? 'pointer-events-auto' : 'pointer-events-none'}`}
             id="head-hotspot-hologram"
           >
             <div className="flex items-center justify-between border-b border-white/10 pb-1 mb-2">
