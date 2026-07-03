@@ -559,7 +559,7 @@ export default function App() {
             </main>
 
             {/* ==================== 6. NAVIGATION VERTICAL DOCK - DOCKED FAR ON THE EDGE ==================== */}
-            <nav className="fixed left-0.5 sm:left-1 md:left-2 lg:left-4 top-[32%] lg:top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-3.5 z-40 bg-transparent p-1 lg:p-2 rounded-full border border-orange-500/30 select-none animate-fade-in lg:portrait:bg-black/35 lg:portrait:backdrop-blur-md lg:portrait:rounded-2xl lg:portrait:p-3.5 lg:portrait:gap-4.5" id="left-nav-sidebar">
+            <nav className="fixed left-0.5 sm:left-1 md:left-2 lg:left-4 top-[32%] lg:top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-3.5 z-40 bg-transparent p-1 lg:p-2 rounded-full border border-orange-500/30 select-none animate-fade-in md:portrait:bg-black/35 md:portrait:backdrop-blur-md md:portrait:rounded-2xl md:portrait:p-3.5 md:portrait:gap-4.5" id="left-nav-sidebar">
               {[
                 { id: 'Home', label: 'Home', icon: Home },
                 { id: 'Projects', label: 'Projects', icon: Layers },
@@ -573,22 +573,22 @@ export default function App() {
                   <div key={item.id} className="relative group/nav">
                     <button
                       onClick={() => handleNavTransition(item.id as any)}
-                      className={`w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center border cursor-pointer transition-all duration-300 lg:portrait:w-[155px] lg:portrait:h-[52px] lg:portrait:rounded-xl lg:portrait:justify-start lg:portrait:px-4.5 ${
+                      className={`w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center border cursor-pointer transition-all duration-300 md:portrait:w-[155px] md:portrait:h-[52px] md:portrait:rounded-xl md:portrait:justify-start md:portrait:px-4.5 ${
                         isActive
                            ? 'bg-orange-500 border-white/10 text-white shadow-[0_0_15px_rgba(249,115,22,0.6)]'
                            : 'bg-transparent border-transparent text-zinc-400 hover:text-white hover:bg-orange-500/15'
                       }`}
                       title={item.label}
                     >
-                      <Icon className="w-3.5 h-3.5 sm:w-[15px] sm:h-[15px] lg:w-[19px] lg:h-[19px] lg:portrait:w-[22px] lg:portrait:h-[22px] shrink-0" />
+                      <Icon className="w-3.5 h-3.5 sm:w-[15px] sm:h-[15px] lg:w-[19px] lg:h-[19px] md:portrait:w-[22px] md:portrait:h-[22px] shrink-0" />
                       
-                      <span className="hidden lg:portrait:inline-block ml-2.5 text-[11.5px] font-bold uppercase tracking-widest text-left truncate leading-none">
+                      <span className="hidden md:portrait:inline-block ml-2.5 text-[11.5px] font-bold uppercase tracking-widest text-left truncate leading-none">
                         {item.label}
                       </span>
                     </button>
                     
                     {/* Hover text flag tooltip */}
-                    <div className="absolute left-10 sm:left-12 lg:left-15 top-1/2 -translate-y-1/2 bg-black/95 border border-white/10 text-white text-[9px] lg:text-[10px] font-bold py-1 px-2.5 rounded-lg opacity-0 pointer-events-none group-hover/nav:opacity-100 transition-all duration-300 group-hover/nav:left-[40px] sm:group-hover/nav:left-[48px] lg:group-hover/nav:left-[58px] shadow-lg uppercase tracking-wider whitespace-nowrap lg:portrait:hidden">
+                    <div className="absolute left-10 sm:left-12 lg:left-15 top-1/2 -translate-y-1/2 bg-black/95 border border-white/10 text-white text-[9px] lg:text-[10px] font-bold py-1 px-2.5 rounded-lg opacity-0 pointer-events-none group-hover/nav:opacity-100 transition-all duration-300 group-hover/nav:left-[40px] sm:group-hover/nav:left-[48px] lg:group-hover/nav:left-[58px] shadow-lg uppercase tracking-wider whitespace-nowrap md:portrait:hidden">
                       {item.label}
                     </div>
                   </div>
