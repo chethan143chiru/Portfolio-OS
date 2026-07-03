@@ -13,18 +13,20 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const [hasTouch, setHasTouch] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
 
   useEffect(() => {
     const checkDevice = () => {
       setIsMobileOrTablet(window.innerWidth < 1024);
       setHasTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+      setIsLandscape(window.innerWidth > window.innerHeight);
     };
     checkDevice();
     window.addEventListener('resize', checkDevice);
     return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
-  const isInteractiveTouch = isMobileOrTablet || hasTouch;
+  const isInteractiveTouch = (isMobileOrTablet || hasTouch) && !isLandscape;
 
   // Floating particles around the portrait
   const particles = [
@@ -117,11 +119,14 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
           if (!isInteractiveTouch) setActiveHotspot(null);
         }}
         onClick={(e) => {
+          e.stopPropagation();
           if (isInteractiveTouch) {
-            e.stopPropagation();
             onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'head' ? null : 'head');
           }
+        }}
+        onTouchStart={(e) => {
+          e.stopPropagation();
         }}
       >
         <div className="relative cursor-pointer group">
@@ -149,11 +154,14 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
           if (!isInteractiveTouch) setActiveHotspot(null);
         }}
         onClick={(e) => {
+          e.stopPropagation();
           if (isInteractiveTouch) {
-            e.stopPropagation();
             onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'chest' ? null : 'chest');
           }
+        }}
+        onTouchStart={(e) => {
+          e.stopPropagation();
         }}
       >
         <div className="relative cursor-pointer group">
@@ -179,11 +187,14 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
           if (!isInteractiveTouch) setActiveHotspot(null);
         }}
         onClick={(e) => {
+          e.stopPropagation();
           if (isInteractiveTouch) {
-            e.stopPropagation();
             onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'arm' ? null : 'arm');
           }
+        }}
+        onTouchStart={(e) => {
+          e.stopPropagation();
         }}
       >
         <div className="relative cursor-pointer group">

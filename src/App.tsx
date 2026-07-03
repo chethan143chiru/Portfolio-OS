@@ -22,18 +22,20 @@ export default function App() {
   const [isMissionHovered, setIsMissionHovered] = useState(false);
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const [hasTouch, setHasTouch] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
 
   useEffect(() => {
     const checkDevice = () => {
       setIsMobileOrTablet(window.innerWidth < 1024);
       setHasTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+      setIsLandscape(window.innerWidth > window.innerHeight);
     };
     checkDevice();
     window.addEventListener('resize', checkDevice);
     return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
-  const isInteractiveTouch = isMobileOrTablet || hasTouch;
+  const isInteractiveTouch = (isMobileOrTablet || hasTouch) && !isLandscape;
 
   useEffect(() => {
     const handleDocumentClick = () => {
@@ -112,11 +114,14 @@ export default function App() {
                     if (!isInteractiveTouch) setIsProfileHovered(true);
                   }}
                   onClick={(e) => {
+                    e.stopPropagation();
                     if (isInteractiveTouch) {
-                      e.stopPropagation();
                       setIsProfileHovered(!isProfileHovered);
                       setIsMissionHovered(false);
                     }
+                  }}
+                  onTouchStart={(e) => {
+                    e.stopPropagation();
                   }}
                   className="flex items-center gap-3 cursor-pointer group/brand"
                 >
@@ -371,11 +376,14 @@ export default function App() {
                     if (!isInteractiveTouch) setIsMissionHovered(true);
                   }}
                   onClick={(e) => {
+                    e.stopPropagation();
                     if (isInteractiveTouch) {
-                      e.stopPropagation();
                       setIsMissionHovered(!isMissionHovered);
                       setIsProfileHovered(false);
                     }
+                  }}
+                  onTouchStart={(e) => {
+                    e.stopPropagation();
                   }}
                   className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-orange-500/30 bg-orange-500/5 hover:bg-orange-500/10 hover:border-orange-500/60 transition-all cursor-pointer shadow-[0_0_15px_rgba(249,115,22,0.1)] group/mission select-none"
                 >
