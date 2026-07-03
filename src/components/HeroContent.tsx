@@ -111,29 +111,29 @@ export default function HeroContent({ onNavToSection }: HeroContentProps) {
       </motion.p>
 
       {/* ==================== FLOATING INFORMATION PANELS ==================== */}
-      <div className="grid grid-cols-3 gap-4 mt-2" id="metrics-grid">
+      <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-2" id="metrics-grid">
         {/* CARD 1: Projects */}
         <div
-          className="p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg text-center md:text-left select-none"
+          className="p-2.5 sm:p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg text-center md:text-left select-none min-w-0"
         >
-          <p className="text-2xl font-black text-orange-500">15+</p>
-          <p className="text-[10px] uppercase text-zinc-400 mt-1 font-bold tracking-wider">Projects</p>
+          <p className="text-xl sm:text-2xl font-black text-orange-500">15+</p>
+          <p className="text-[8px] sm:text-[10px] uppercase text-zinc-400 mt-1 font-bold tracking-wider truncate" title="Projects">Projects</p>
         </div>
 
         {/* CARD 2: Certifications */}
         <div
-          className="p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg text-center md:text-left select-none"
+          className="p-2.5 sm:p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg text-center md:text-left select-none min-w-0"
         >
-          <p className="text-2xl font-black text-purple-500">40+</p>
-          <p className="text-[10px] uppercase text-zinc-400 mt-1 font-bold tracking-wider">Certifications</p>
+          <p className="text-xl sm:text-2xl font-black text-purple-500">40+</p>
+          <p className="text-[8px] sm:text-[10px] uppercase text-zinc-400 mt-1 font-bold tracking-wider truncate" title="Certifications">Certifications</p>
         </div>
 
         {/* CARD 3: Stacks */}
         <div
-          className="p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg text-center md:text-left select-none"
+          className="p-2.5 sm:p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg text-center md:text-left select-none min-w-0"
         >
-          <p className="text-2xl font-black text-blue-500">30+</p>
-          <p className="text-[10px] uppercase text-zinc-400 mt-1 font-bold tracking-wider">Stacks</p>
+          <p className="text-xl sm:text-2xl font-black text-blue-500">30+</p>
+          <p className="text-[8px] sm:text-[10px] uppercase text-zinc-400 mt-1 font-bold tracking-wider truncate" title="Stacks">Stacks</p>
         </div>
       </div>
 

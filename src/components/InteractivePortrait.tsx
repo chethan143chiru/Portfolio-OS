@@ -216,17 +216,17 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
             </div>
             
             <div className="grid grid-cols-3 gap-1 sm:gap-1.5 text-center mt-1">
-              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
-                <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">ALPHA</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Alpha</span>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-center items-center min-h-[48px] sm:min-h-[58px] gap-0.5 min-w-0">
+                <span className="text-orange-400 font-extrabold text-[7px] xs:text-[8.5px] sm:text-[11px] block text-center truncate">JEE</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block text-center leading-tight">Alpha</span>
               </div>
-              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
-                <span className="text-purple-400 font-extrabold text-[9px] sm:text-[11px] block text-center">VTU</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">VTU<br />Honour</span>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-center items-center min-h-[48px] sm:min-h-[58px] gap-0.5 min-w-0">
+                <span className="text-purple-400 font-extrabold text-[7px] xs:text-[8.5px] sm:text-[11px] block text-center truncate">MOOC</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block text-center leading-tight">VTU<br />Honour</span>
               </div>
-              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
-                <span className="text-[#eae5ef] font-extrabold text-[9px] sm:text-[11px] block text-center">CRED</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Cred</span>
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-center items-center min-h-[48px] sm:min-h-[58px] gap-0.5 min-w-0">
+                <span className="text-[#eae5ef] font-extrabold text-[7px] xs:text-[8.5px] sm:text-[11px] block text-center truncate">VENDOR</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block text-center leading-tight">Cred</span>
               </div>
             </div>
           </motion.div>
@@ -252,17 +252,17 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
             </div>
 
             <div className="grid grid-cols-3 gap-1 sm:gap-1.5 text-center mt-1">
-              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-center items-center min-h-[48px] sm:min-h-[58px] gap-0.5">
                 <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">4+</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Logic</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block text-center leading-tight">Logic</span>
               </div>
-              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-center items-center min-h-[48px] sm:min-h-[58px] gap-0.5">
                 <span className="text-purple-400 font-extrabold text-[9px] sm:text-[11px] block text-center">8+</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Core</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block text-center leading-tight">Core</span>
               </div>
-              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
+              <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-center items-center min-h-[48px] sm:min-h-[58px] gap-0.5">
                 <span className="text-blue-400 font-extrabold text-[9px] sm:text-[11px] block text-center">6+</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Aether</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block text-center leading-tight">Aether</span>
               </div>
             </div>
           </motion.div>

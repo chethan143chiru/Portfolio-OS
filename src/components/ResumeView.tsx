@@ -282,10 +282,10 @@ export default function ResumeView() {
               doc.setFont('helvetica', 'bold');
               doc.setFontSize(9.5);
               doc.setTextColor(30, 30, 30);
-              const titleText = ach.title === 'Cleared JEE Main'
-                ? 'JEE Main Qualifier'
-                : ach.title === 'H2S Hackathon'
-                ? 'Industry Certified'
+              const titleText = ach.title === 'Alpha'
+                ? 'Alpha'
+                : ach.title === 'Cred'
+                ? 'Cred'
                 : ach.title === 'VTU Honours Program'
                 ? 'VTU Honour'
                 : ach.title;

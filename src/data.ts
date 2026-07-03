@@ -585,7 +585,7 @@ export const CERTIFICATIONS: CertificationType[] = [
 export const ACHIEVEMENTS: AchievementItem[] = [
   {
     id: 'ach-1',
-    title: 'Cleared JEE Main',
+    title: 'Alpha',
     subtitle: 'Cleared standard JEE Main exam and appeared for the prestigious JEE Advanced examination with honors.',
     year: '2022'
   },
@@ -597,7 +597,7 @@ export const ACHIEVEMENTS: AchievementItem[] = [
   },
   {
     id: 'ach-3',
-    title: 'H2S Hackathon',
+    title: 'Cred',
     subtitle: 'Participated in the competitive H2S Hackathon coding sprint, building collaborative solutions.',
     year: '2025'
   },
