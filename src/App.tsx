@@ -239,7 +239,7 @@ export default function App() {
                       exit={{ opacity: 0, y: 15, scale: 0.95 }}
                       transition={{ type: "spring", stiffness: 350, damping: 25 }}
                       onClick={(e) => e.stopPropagation()}
-                      className="absolute top-14 left-0 w-[290px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl shadow-[0_4px_30px_rgba(249,115,22,0.15),_0_4px_30px_rgba(168,85,247,0.15)] text-left font-mono z-50 text-xs text-[#eae5ef]"
+                      className="absolute top-14 left-0 w-[290px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl shadow-[0_4px_30px_rgba(249,115,22,0.15),_0_4px_30px_rgba(168,85,247,0.15)] text-left font-mono z-50 text-xs text-[#eae5ef] pointer-events-none lg:pointer-events-auto"
                       style={{
                         backgroundImage: "linear-gradient(rgba(10, 10, 12, 0.2), rgba(10, 10, 12, 0.2)), linear-gradient(135deg, #f97316 0%, #a855f7 100%)",
                         backgroundOrigin: "border-box",
@@ -407,7 +407,7 @@ export default function App() {
                         filter: "brightness(1.15)",
                         transition: { duration: 0.2 }
                       }}
-                      className="absolute top-12 right-0 w-[300px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl text-left font-mono z-50 text-xs text-[#eae5ef]"
+                      className="absolute top-12 right-0 w-[300px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl text-left font-mono z-50 text-xs text-[#eae5ef] pointer-events-none lg:pointer-events-auto"
                       style={{
                         backgroundImage: "linear-gradient(rgba(10, 10, 12, 0.2), rgba(10, 10, 12, 0.2)), linear-gradient(135deg, #f97316 0%, #a855f7 100%)",
                         backgroundOrigin: "border-box",
@@ -523,7 +523,13 @@ export default function App() {
                     <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
                       {/* LEFT 65% STAGE: PORTRAIT HUB WITH INTEGRATED FLIGHT GRAPHICS */}
                       <div className="col-span-1 lg:col-span-7 flex justify-center">
-                        <InteractivePortrait onNavToSection={handleNavTransition} />
+                        <InteractivePortrait 
+                          onNavToSection={handleNavTransition} 
+                          onHotspotActivate={() => {
+                            setIsMissionHovered(false);
+                            setIsProfileHovered(false);
+                          }}
+                        />
                       </div>
 
                       {/* RIGHT 35% STAGE: HERO INFO */}
@@ -553,7 +559,7 @@ export default function App() {
             </main>
 
             {/* ==================== 6. NAVIGATION VERTICAL DOCK - DOCKED FAR ON THE EDGE ==================== */}
-            <nav className="fixed left-0.5 sm:left-1 md:left-2 lg:left-4 top-[32%] lg:top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-3.5 z-40 bg-transparent p-1 lg:p-2 rounded-full border border-orange-500/30 select-none animate-fade-in" id="left-nav-sidebar">
+            <nav className="fixed left-0.5 sm:left-1 md:left-2 lg:left-4 top-[32%] lg:top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-3.5 z-40 bg-transparent p-1 lg:p-2 rounded-full border border-orange-500/30 select-none animate-fade-in portrait:bg-black/35 portrait:backdrop-blur-md portrait:rounded-2xl portrait:p-2.5 portrait:lg:p-3.5 portrait:gap-3 portrait:lg:gap-4.5" id="left-nav-sidebar">
               {[
                 { id: 'Home', label: 'Home', icon: Home },
                 { id: 'Projects', label: 'Projects', icon: Layers },
@@ -567,18 +573,22 @@ export default function App() {
                   <div key={item.id} className="relative group/nav">
                     <button
                       onClick={() => handleNavTransition(item.id as any)}
-                      className={`w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center border cursor-pointer transition-all duration-300 ${
+                      className={`w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center border cursor-pointer transition-all duration-300 portrait:w-[110px] portrait:sm:w-[125px] portrait:lg:w-[155px] portrait:h-[38px] portrait:sm:h-[44px] portrait:lg:h-[52px] portrait:rounded-xl portrait:justify-start portrait:px-2.5 portrait:sm:px-3 portrait:lg:px-4.5 ${
                         isActive
                            ? 'bg-orange-500 border-white/10 text-white shadow-[0_0_15px_rgba(249,115,22,0.6)]'
                            : 'bg-transparent border-transparent text-zinc-400 hover:text-white hover:bg-orange-500/15'
                       }`}
                       title={item.label}
                     >
-                      <Icon className="w-3.5 h-3.5 sm:w-[15px] sm:h-[15px] lg:w-[19px] lg:h-[19px]" />
+                      <Icon className="w-3.5 h-3.5 sm:w-[15px] sm:h-[15px] lg:w-[19px] lg:h-[19px] portrait:w-[16px] portrait:sm:w-[18px] portrait:lg:w-[22px] portrait:h-[16px] portrait:sm:h-[18px] portrait:lg:h-[22px] shrink-0" />
+                      
+                      <span className="hidden portrait:inline-block ml-1.5 sm:ml-2.5 text-[8.5px] sm:text-[9.5px] lg:text-[11.5px] font-bold uppercase tracking-widest text-left truncate leading-none">
+                        {item.label}
+                      </span>
                     </button>
                     
                     {/* Hover text flag tooltip */}
-                    <div className="absolute left-10 sm:left-12 lg:left-15 top-1/2 -translate-y-1/2 bg-black/95 border border-white/10 text-white text-[9px] lg:text-[10px] font-bold py-1 px-2.5 rounded-lg opacity-0 pointer-events-none group-hover/nav:opacity-100 transition-all duration-300 group-hover/nav:left-[40px] sm:group-hover/nav:left-[48px] lg:group-hover/nav:left-[58px] shadow-lg uppercase tracking-wider whitespace-nowrap">
+                    <div className="absolute left-10 sm:left-12 lg:left-15 top-1/2 -translate-y-1/2 bg-black/95 border border-white/10 text-white text-[9px] lg:text-[10px] font-bold py-1 px-2.5 rounded-lg opacity-0 pointer-events-none group-hover/nav:opacity-100 transition-all duration-300 group-hover/nav:left-[40px] sm:group-hover/nav:left-[48px] lg:group-hover/nav:left-[58px] shadow-lg uppercase tracking-wider whitespace-nowrap portrait:hidden">
                       {item.label}
                     </div>
                   </div>

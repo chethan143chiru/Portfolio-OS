@@ -5,9 +5,10 @@ import cinematicPortrait from '../assets/images/cinematic_portrait_1781353600397
 
 interface InteractivePortraitProps {
   onNavToSection: (section: 'Home' | 'Projects' | 'Certificates' | 'Resume' | 'Contact') => void;
+  onHotspotActivate?: () => void;
 }
 
-export default function InteractivePortrait({ onNavToSection }: InteractivePortraitProps) {
+export default function InteractivePortrait({ onNavToSection, onHotspotActivate }: InteractivePortraitProps) {
   const [activeHotspot, setActiveHotspot] = useState<'head' | 'chest' | 'arm' | null>(null);
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
@@ -114,6 +115,7 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
         onClick={(e) => {
           if (isMobileOrTablet) {
             e.stopPropagation();
+            onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'head' ? null : 'head');
           }
         }}
@@ -145,6 +147,7 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
         onClick={(e) => {
           if (isMobileOrTablet) {
             e.stopPropagation();
+            onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'chest' ? null : 'chest');
           }
         }}
@@ -174,6 +177,7 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
         onClick={(e) => {
           if (isMobileOrTablet) {
             e.stopPropagation();
+            onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'arm' ? null : 'arm');
           }
         }}
@@ -213,16 +217,16 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
             
             <div className="grid grid-cols-3 gap-1 sm:gap-1.5 text-center mt-1">
               <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
-                <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">JEE</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">JEE<br />Qualifier</span>
+                <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">ALPHA</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Alpha</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
                 <span className="text-purple-400 font-extrabold text-[9px] sm:text-[11px] block text-center">VTU</span>
                 <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">VTU<br />Honour</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
-                <span className="text-[#eae5ef] font-extrabold text-[9px] sm:text-[11px] block text-center">IND</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Industry<br />Certified</span>
+                <span className="text-[#eae5ef] font-extrabold text-[9px] sm:text-[11px] block text-center">CRED</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Cred</span>
               </div>
             </div>
           </motion.div>
@@ -250,15 +254,15 @@ export default function InteractivePortrait({ onNavToSection }: InteractivePortr
             <div className="grid grid-cols-3 gap-1 sm:gap-1.5 text-center mt-1">
               <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
                 <span className="text-orange-400 font-extrabold text-[9px] sm:text-[11px] block text-center">4+</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Programming<br />Languages</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Logic</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
                 <span className="text-purple-400 font-extrabold text-[9px] sm:text-[11px] block text-center">8+</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Frameworks</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Core</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex flex-col justify-between min-h-[48px] sm:min-h-[58px]">
                 <span className="text-blue-400 font-extrabold text-[9px] sm:text-[11px] block text-center">6+</span>
-                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Cloud/Env</span>
+                <span className="text-[6px] sm:text-[7.5px] text-zinc-400 block mt-0.5 text-center leading-tight">Aether</span>
               </div>
             </div>
           </motion.div>
