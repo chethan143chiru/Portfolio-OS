@@ -12,15 +12,19 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
   const [activeHotspot, setActiveHotspot] = useState<'head' | 'chest' | 'arm' | null>(null);
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+  const [hasTouch, setHasTouch] = useState(false);
 
   useEffect(() => {
     const checkDevice = () => {
       setIsMobileOrTablet(window.innerWidth < 1024);
+      setHasTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
     };
     checkDevice();
     window.addEventListener('resize', checkDevice);
     return () => window.removeEventListener('resize', checkDevice);
   }, []);
+
+  const isInteractiveTouch = isMobileOrTablet || hasTouch;
 
   // Floating particles around the portrait
   const particles = [
@@ -107,13 +111,13 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
       <div
         className="absolute top-[20%] left-[45%] -translate-x-1/2 -translate-y-1/2 z-20"
         onMouseEnter={() => {
-          if (!isMobileOrTablet) setActiveHotspot('head');
+          if (!isInteractiveTouch) setActiveHotspot('head');
         }}
         onMouseLeave={() => {
-          if (!isMobileOrTablet) setActiveHotspot(null);
+          if (!isInteractiveTouch) setActiveHotspot(null);
         }}
         onClick={(e) => {
-          if (isMobileOrTablet) {
+          if (isInteractiveTouch) {
             e.stopPropagation();
             onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'head' ? null : 'head');
@@ -139,13 +143,13 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
       <div
         className="absolute top-[52%] left-[38%] -translate-x-1/2 -translate-y-1/2 z-20"
         onMouseEnter={() => {
-          if (!isMobileOrTablet) setActiveHotspot('chest');
+          if (!isInteractiveTouch) setActiveHotspot('chest');
         }}
         onMouseLeave={() => {
-          if (!isMobileOrTablet) setActiveHotspot(null);
+          if (!isInteractiveTouch) setActiveHotspot(null);
         }}
         onClick={(e) => {
-          if (isMobileOrTablet) {
+          if (isInteractiveTouch) {
             e.stopPropagation();
             onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'chest' ? null : 'chest');
@@ -169,13 +173,13 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
       <div
         className="absolute top-[75%] left-[55%] -translate-x-1/2 -translate-y-1/2 z-20"
         onMouseEnter={() => {
-          if (!isMobileOrTablet) setActiveHotspot('arm');
+          if (!isInteractiveTouch) setActiveHotspot('arm');
         }}
         onMouseLeave={() => {
-          if (!isMobileOrTablet) setActiveHotspot(null);
+          if (!isInteractiveTouch) setActiveHotspot(null);
         }}
         onClick={(e) => {
-          if (isMobileOrTablet) {
+          if (isInteractiveTouch) {
             e.stopPropagation();
             onHotspotActivate?.();
             setActiveHotspot(activeHotspot === 'arm' ? null : 'arm');
@@ -205,7 +209,8 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-2 xs:right-4 sm:right-5 top-[5%] sm:top-[12%] w-[135px] xs:w-[165px] sm:w-[245px] md:w-[275px] z-30 bg-zinc-950/95 backdrop-blur-3xl border border-white/15 rounded-xl p-1.5 sm:p-3.5 shadow-[0_12px_44px_rgba(0,0,0,0.8)] font-mono text-left pointer-events-none select-none"
+            onClick={(e) => e.stopPropagation()}
+            className="absolute right-2 xs:right-4 sm:right-5 top-[5%] sm:top-[12%] w-[135px] xs:w-[165px] sm:w-[245px] md:w-[275px] z-30 bg-zinc-950/95 backdrop-blur-3xl border border-white/15 rounded-xl p-1.5 sm:p-3.5 shadow-[0_12px_44px_rgba(0,0,0,0.8)] font-mono text-left pointer-events-auto select-none"
             id="head-hotspot-hologram"
           >
             <div className="flex items-center justify-between border-b border-white/10 pb-1 mb-2">
@@ -241,7 +246,8 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
             animate={{ opacity: 1, scale: 1, x: 0 }}
             exit={{ opacity: 0, scale: 0.9, x: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-2 xs:left-4 sm:left-5 top-[28%] sm:top-[32%] w-[135px] xs:w-[165px] sm:w-[245px] md:w-[275px] z-30 bg-zinc-950/95 backdrop-blur-3xl border border-white/15 rounded-xl p-1.5 sm:p-3.5 shadow-[0_12px_44px_rgba(0,0,0,0.8)] font-mono text-left pointer-events-none select-none"
+            onClick={(e) => e.stopPropagation()}
+            className="absolute left-2 xs:left-4 sm:left-5 top-[28%] sm:top-[32%] w-[135px] xs:w-[165px] sm:w-[245px] md:w-[275px] z-30 bg-zinc-950/95 backdrop-blur-3xl border border-white/15 rounded-xl p-1.5 sm:p-3.5 shadow-[0_12px_44px_rgba(0,0,0,0.8)] font-mono text-left pointer-events-auto select-none"
             id="chest-hotspot-hologram"
           >
             <div className="flex items-center justify-between border-b border-white/10 pb-1 mb-2">
@@ -277,7 +283,8 @@ export default function InteractivePortrait({ onNavToSection, onHotspotActivate 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-2 xs:right-4 sm:right-5 top-[52%] sm:top-[56%] w-[135px] xs:w-[165px] sm:w-[245px] md:w-[275px] z-30 bg-zinc-950/95 backdrop-blur-3xl border border-white/15 rounded-xl p-1.5 sm:p-3.5 shadow-[0_12px_44px_rgba(0,0,0,0.8)] font-mono text-left pointer-events-none select-none"
+            onClick={(e) => e.stopPropagation()}
+            className="absolute right-2 xs:right-4 sm:right-5 top-[52%] sm:top-[56%] w-[135px] xs:w-[165px] sm:w-[245px] md:w-[275px] z-30 bg-zinc-950/95 backdrop-blur-3xl border border-white/15 rounded-xl p-1.5 sm:p-3.5 shadow-[0_12px_44px_rgba(0,0,0,0.8)] font-mono text-left pointer-events-auto select-none"
             id="arm-hotspot-hologram"
           >
             <div className="flex items-center justify-between border-b border-white/10 pb-1 mb-2">

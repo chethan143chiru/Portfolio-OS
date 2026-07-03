@@ -21,15 +21,19 @@ export default function App() {
   const [isProfileHovered, setIsProfileHovered] = useState(false);
   const [isMissionHovered, setIsMissionHovered] = useState(false);
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+  const [hasTouch, setHasTouch] = useState(false);
 
   useEffect(() => {
     const checkDevice = () => {
       setIsMobileOrTablet(window.innerWidth < 1024);
+      setHasTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
     };
     checkDevice();
     window.addEventListener('resize', checkDevice);
     return () => window.removeEventListener('resize', checkDevice);
   }, []);
+
+  const isInteractiveTouch = isMobileOrTablet || hasTouch;
 
   useEffect(() => {
     const handleDocumentClick = () => {
@@ -99,16 +103,16 @@ export default function App() {
               <div
                 className="relative z-50 flex items-center"
                 onMouseLeave={() => {
-                  if (!isMobileOrTablet) setIsProfileHovered(false);
+                  if (!isInteractiveTouch) setIsProfileHovered(false);
                 }}
               >
                 {/* Brand Link Trigger (Only hovering logo/name triggers the display) */}
                 <div 
                   onMouseEnter={() => {
-                    if (!isMobileOrTablet) setIsProfileHovered(true);
+                    if (!isInteractiveTouch) setIsProfileHovered(true);
                   }}
                   onClick={(e) => {
-                    if (isMobileOrTablet) {
+                    if (isInteractiveTouch) {
                       e.stopPropagation();
                       setIsProfileHovered(!isProfileHovered);
                       setIsMissionHovered(false);
@@ -239,7 +243,7 @@ export default function App() {
                       exit={{ opacity: 0, y: 15, scale: 0.95 }}
                       transition={{ type: "spring", stiffness: 350, damping: 25 }}
                       onClick={(e) => e.stopPropagation()}
-                      className="absolute top-14 left-0 w-[290px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl shadow-[0_4px_30px_rgba(249,115,22,0.15),_0_4px_30px_rgba(168,85,247,0.15)] text-left font-mono z-50 text-xs text-[#eae5ef] pointer-events-none lg:pointer-events-auto"
+                      className="absolute top-14 left-0 w-[290px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl shadow-[0_4px_30px_rgba(249,115,22,0.15),_0_4px_30px_rgba(168,85,247,0.15)] text-left font-mono z-50 text-xs text-[#eae5ef] pointer-events-auto"
                       style={{
                         backgroundImage: "linear-gradient(rgba(10, 10, 12, 0.2), rgba(10, 10, 12, 0.2)), linear-gradient(135deg, #f97316 0%, #a855f7 100%)",
                         backgroundOrigin: "border-box",
@@ -359,15 +363,15 @@ export default function App() {
               <div 
                 className="relative z-50 animate-fade-in flex flex-col items-end"
                 onMouseLeave={() => {
-                  if (!isMobileOrTablet) setIsMissionHovered(false);
+                  if (!isInteractiveTouch) setIsMissionHovered(false);
                 }}
               >
                 <div 
                   onMouseEnter={() => {
-                    if (!isMobileOrTablet) setIsMissionHovered(true);
+                    if (!isInteractiveTouch) setIsMissionHovered(true);
                   }}
                   onClick={(e) => {
-                    if (isMobileOrTablet) {
+                    if (isInteractiveTouch) {
                       e.stopPropagation();
                       setIsMissionHovered(!isMissionHovered);
                       setIsProfileHovered(false);
@@ -407,7 +411,7 @@ export default function App() {
                         filter: "brightness(1.15)",
                         transition: { duration: 0.2 }
                       }}
-                      className="absolute top-12 right-0 w-[300px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl text-left font-mono z-50 text-xs text-[#eae5ef] pointer-events-none lg:pointer-events-auto"
+                      className="absolute top-12 right-0 w-[300px] bg-transparent backdrop-blur-none border border-transparent p-[1.5px] rounded-2xl text-left font-mono z-50 text-xs text-[#eae5ef] pointer-events-auto"
                       style={{
                         backgroundImage: "linear-gradient(rgba(10, 10, 12, 0.2), rgba(10, 10, 12, 0.2)), linear-gradient(135deg, #f97316 0%, #a855f7 100%)",
                         backgroundOrigin: "border-box",
