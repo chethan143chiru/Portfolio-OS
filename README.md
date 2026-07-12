@@ -4,7 +4,7 @@ A modern, responsive, and installable personal portfolio website built to showca
 
 🚀 Live Demo
 
-Website: https://your-portfolio-url.vercel.app
+Website: https://chethachiru.vercel.app
 
 ✨ Features
 
